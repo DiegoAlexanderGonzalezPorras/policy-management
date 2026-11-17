@@ -1,0 +1,16 @@
+services:
+  postgres:
+    image: postgres:17
+    container_name: polizas-db
+    environment:
+      POSTGRES_DB: polizas
+      POSTGRES_USER: bd_user_polizas
+      POSTGRES_PASSWORD: 123456789
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./postgres:/docker-entrypoint-initdb.d
+
+volumes:
+  postgres_data:
